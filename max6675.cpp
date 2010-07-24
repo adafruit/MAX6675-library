@@ -33,11 +33,11 @@ float MAX6675::readCelsius(void) {
   v <<= 8;
   v |= spiread();
 
-  v >>= 2;
+  v >>= 3;
 
   digitalWrite(cs, HIGH);
 
-  return v/10.0;
+  return v*0.25;
 }
 
 float MAX6675::readFarenheit(void) {
