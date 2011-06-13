@@ -32,6 +32,8 @@ double MAX6675::readCelsius(void) {
   v <<= 8;
   v |= spiread();
 
+  digitalWrite(cs, HIGH);
+
   if (v & 0x4) {
     // uh oh, no thermocouple attached!
     return NAN; 
@@ -39,8 +41,6 @@ double MAX6675::readCelsius(void) {
   }
 
   v >>= 3;
-
-  digitalWrite(cs, HIGH);
 
   return v*0.25;
 }
