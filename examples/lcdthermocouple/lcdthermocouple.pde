@@ -3,6 +3,7 @@
 
 #include <max6675.h>
 #include <LiquidCrystal.h>
+#include <Wire.h>
 
 int thermoDO = 4;
 int thermoCS = 5;
@@ -39,10 +40,18 @@ void loop() {
   // go to line #1
   lcd.setCursor(0,1);
   lcd.print(thermocouple.readCelsius());
+#if ARDUINO >= 100
+  lcd.write(0);
+#else
   lcd.print(0, BYTE);
+#endif
   lcd.print("C ");
   lcd.print(thermocouple.readFarenheit());
+#if ARDUINO >= 100
+  lcd.write(0);
+#else
   lcd.print(0, BYTE);
+#endif
   lcd.print('F');
   
   delay(1000);
