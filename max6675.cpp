@@ -4,7 +4,7 @@
 #include <avr/pgmspace.h>
 #include <util/delay.h>
 #include <stdlib.h>
-#include "MAX6675.h"
+#include "max6675.h"
 
 MAX6675::MAX6675(int8_t SCLK, int8_t CS, int8_t MISO) {
   sclk = SCLK;
