@@ -46,7 +46,7 @@ void loop() {
   lcd.print(0, BYTE);
 #endif
   lcd.print("C ");
-  lcd.print(thermocouple.readFarenheit());
+  lcd.print(thermocouple.readFahrenheit());
 #if ARDUINO >= 100
   lcd.write((byte)0);
 #else
