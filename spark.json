@@ -2,6 +2,6 @@
   "name": "MAX6675-library",
   "author": "Mike Seiler <mikeseiler@aol.com>",
   "license": "public domain",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "MAX6675 Adafruit interface"
 }
