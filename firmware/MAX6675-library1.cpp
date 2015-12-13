@@ -1,6 +1,7 @@
 // this library is public domain. enjoy!
 // www.ladyada.net/learn/sensors/thermocouple
 // for inclusion in particle.io libary
+// for particle.io
 
 #ifdef __AVR
   #include <avr/pgmspace.h>

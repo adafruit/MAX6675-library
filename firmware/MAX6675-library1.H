@@ -1,5 +1,6 @@
 // this library is public domain. enjoy!
 // www.ladyada.net/learn/sensors/thermocouple
+// for particle.io
 
 #if ARDUINO >= 100
  #include "Arduino.h"
