@@ -8,7 +8,7 @@
 #elif defined(ESP8266)
   #include <pgmspace.h>
 #endif
-#include <util/delay.h>
+//#include <util/delay.h>
 #include <stdlib.h>
 #include "max6675.h"
 
