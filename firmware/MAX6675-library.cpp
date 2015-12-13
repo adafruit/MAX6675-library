@@ -10,7 +10,7 @@
 #endif
 //#include <util/delay.h>
 #include <stdlib.h>
-//#include "max6675.h"
+#include "MAX6675-library.h"
 
 MAX6675::MAX6675(int8_t SCLK, int8_t CS, int8_t MISO) {
   sclk = SCLK;
