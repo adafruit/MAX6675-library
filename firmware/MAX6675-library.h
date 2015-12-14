@@ -2,10 +2,10 @@
 // www.ladyada.net/learn/sensors/thermocouple
 // for particle.io use
 
-#if ARDUINO >= 100
+#if defined(ARDUINO) && ARDUINO >= 100
  #include "Arduino.h"
 #else
- #include "WProgram.h"
+// #include "WProgram.h"
 #endif
 
 class MAX6675 {
