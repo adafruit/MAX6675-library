@@ -7,6 +7,7 @@
 //#else
 // #include "WProgram.h"
 //#endif
+#include "application.h"
 
 class MAX6675 {
  public:
