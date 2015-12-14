@@ -2,6 +2,6 @@
   "name": "MAX6675-library",
   "author": "Mike Seiler <mikeseiler@aol.com>",
   "license": "public domain",
-  "version": "0.0.20",
-  "description": "MAX6675 Adafruit interface"
+  "version": "0.0.11",
+  "description": "MAX6675 Adafruit thermocouple interface for particle.io"
 }
