@@ -41,14 +41,14 @@ void loop() {
   lcd.setCursor(0,1);
   lcd.print(thermocouple.readCelsius());
 #if ARDUINO >= 100
-  lcd.write(0);
+  lcd.write((byte)0);
 #else
   lcd.print(0, BYTE);
 #endif
   lcd.print("C ");
-  lcd.print(thermocouple.readFarenheit());
+  lcd.print(thermocouple.readFahrenheit());
 #if ARDUINO >= 100
-  lcd.write(0);
+  lcd.write((byte)0);
 #else
   lcd.print(0, BYTE);
 #endif

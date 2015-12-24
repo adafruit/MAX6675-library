@@ -48,7 +48,7 @@ double MAX6675::readCelsius(void) {
   return v*0.25;
 }
 
-double MAX6675::readFarenheit(void) {
+double MAX6675::readFahrenheit(void) {
   return readCelsius() * 9.0/5.0 + 32;
 }
 

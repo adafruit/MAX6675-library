@@ -13,6 +13,7 @@ max6675	KEYWORD1
 #######################################
 
 readCelsius	KEYWORD2
+readFahrenheit	KEYWORD2
 readFarenheit	KEYWORD2
 
 #######################################
