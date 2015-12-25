@@ -1,5 +1,5 @@
 // this library is public domain. enjoy!
-// www.ladyada.net/learn/sensors/thermocouple
+// https://learn.adafruit.com/thermocouple/using-a-thermocouple
 
 #ifdef __AVR
   #include <avr/pgmspace.h>
