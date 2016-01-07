@@ -1,0 +1,11 @@
+{
+  "name": "Adafruit-MAX6675",
+  "keywords": "max6675, thermocouple",
+  "description": "Arduino library for interfacing with MAX6675 thermocouple amplifier",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adafruit/MAX6675-library.git"
+  },
+  "frameworks": "arduino",
+  "platforms": "atmelavr"
+}
