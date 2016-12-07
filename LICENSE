@@ -1,0 +1,1 @@
+See the MAX6675 library from Adafruit
