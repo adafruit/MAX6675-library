@@ -27,7 +27,7 @@ double MAX6675::readCelsius(void) {
   uint16_t v;
 
   digitalWrite(cs, LOW);
-  _delay_ms(1);
+  delayMicroseconds(1);
 
   v = spiread();
   v <<= 8;
@@ -57,14 +57,14 @@ byte MAX6675::spiread(void) {
   for (i=7; i>=0; i--)
   {
     digitalWrite(sclk, LOW);
-    _delay_ms(1);
+    delayMicroseconds(1);
     if (digitalRead(miso)) {
       //set the bit to 0 no matter what
       d |= (1 << i);
     }
 
     digitalWrite(sclk, HIGH);
-    _delay_ms(1);
+    delayMicroseconds(1);
   }
 
   return d;
