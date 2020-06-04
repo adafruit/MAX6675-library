@@ -1,13 +1,6 @@
 // this library is public domain. enjoy!
 // www.ladyada.net/learn/sensors/thermocouple
 
-#ifdef __AVR
-  #include <avr/pgmspace.h>
-#elif defined(ESP8266)
-  #include <pgmspace.h>
-#endif
-#include <util/delay.h>
-#include <stdlib.h>
 #include "max6675.h"
 
 MAX6675::MAX6675(int8_t SCLK, int8_t CS, int8_t MISO) {
@@ -27,7 +20,7 @@ double MAX6675::readCelsius(void) {
   uint16_t v;
 
   digitalWrite(cs, LOW);
-  _delay_ms(1);
+  delay(1);
 
   v = spiread();
   v <<= 8;
@@ -57,14 +50,14 @@ byte MAX6675::spiread(void) {
   for (i=7; i>=0; i--)
   {
     digitalWrite(sclk, LOW);
-    _delay_ms(1);
+    delay(1);
     if (digitalRead(miso)) {
       //set the bit to 0 no matter what
       d |= (1 << i);
     }
 
     digitalWrite(sclk, HIGH);
-    _delay_ms(1);
+    delay(1);
   }
 
   return d;
