@@ -1,14 +1,10 @@
 // this library is public domain. enjoy!
 // www.ladyada.net/learn/sensors/thermocouple
 
-#ifndef max6675_h
-#define max6675_h
+#ifndef ADAFRUIT_MAX6675_H
+#define ADAFRUIT_MAX6675_H
 
-#if ARDUINO >= 100
- #include "Arduino.h"
-#else
- #include "WProgram.h"
-#endif
+#include "Arduino.h"
 
 class MAX6675 {
  public:
