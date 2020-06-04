@@ -1,5 +1,5 @@
 // this library is public domain. enjoy!
-// www.ladyada.net/learn/sensors/thermocouple
+// https://learn.adafruit.com/thermocouple/
 
 #include "max6675.h"
 
@@ -15,12 +15,14 @@ MAX6675::MAX6675(int8_t SCLK, int8_t CS, int8_t MISO) {
 
   digitalWrite(cs, HIGH);
 }
-double MAX6675::readCelsius(void) {
+
+
+float MAX6675::readCelsius(void) {
 
   uint16_t v;
 
   digitalWrite(cs, LOW);
-  delay(1);
+  delayMicroseconds(10);
 
   v = spiread();
   v <<= 8;
@@ -39,7 +41,7 @@ double MAX6675::readCelsius(void) {
   return v*0.25;
 }
 
-double MAX6675::readFahrenheit(void) {
+float MAX6675::readFahrenheit(void) {
   return readCelsius() * 9.0/5.0 + 32;
 }
 
@@ -50,14 +52,14 @@ byte MAX6675::spiread(void) {
   for (i=7; i>=0; i--)
   {
     digitalWrite(sclk, LOW);
-    delay(1);
+    delayMicroseconds(10);
     if (digitalRead(miso)) {
       //set the bit to 0 no matter what
       d |= (1 << i);
     }
 
     digitalWrite(sclk, HIGH);
-    delay(1);
+    delayMicroseconds(10);
   }
 
   return d;
