@@ -25,5 +25,6 @@ void loop() {
    Serial.print("F = ");
    Serial.println(thermocouple.readFahrenheit());
  
+   // For the MAX6675 to update, you must delay AT LEAST 250ms between reads!
    delay(1000);
 }
