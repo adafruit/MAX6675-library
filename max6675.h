@@ -1,6 +1,9 @@
 // this library is public domain. enjoy!
 // www.ladyada.net/learn/sensors/thermocouple
 
+#ifndef max6675_h
+#define max6675_h
+
 #if ARDUINO >= 100
  #include "Arduino.h"
 #else
@@ -19,3 +22,5 @@ class MAX6675 {
   int8_t sclk, miso, cs;
   uint8_t spiread(void);
 };
+
+#endif
