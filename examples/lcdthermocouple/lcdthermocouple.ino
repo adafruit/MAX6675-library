@@ -1,5 +1,5 @@
 // this example is public domain. enjoy!
-// www.ladyada.net/learn/sensors/thermocouple
+// https://learn.adafruit.com/thermocouple/
 
 #include <max6675.h>
 #include <LiquidCrystal.h>
