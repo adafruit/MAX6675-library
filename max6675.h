@@ -6,16 +6,23 @@
 
 #include "Arduino.h"
 
+/**************************************************************************/
+/*!
+    @brief  Class for communicating with thermocouple sensor
+*/
+/**************************************************************************/
 class MAX6675 {
- public:
+public:
   MAX6675(int8_t SCLK, int8_t CS, int8_t MISO);
 
   float readCelsius(void);
   float readFahrenheit(void);
-  // For compatibility with older versions:
+
+  /*!    @brief  For compatibility with older versions
+         @returns Temperature in F or NAN on failure! */
   float readFarenheit(void) { return readFahrenheit(); }
 
- private:
+private:
   int8_t sclk, miso, cs;
   uint8_t spiread(void);
 };
