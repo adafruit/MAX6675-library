@@ -61,7 +61,7 @@ float MAX6675::readCelsius(void) {
 */
 /**************************************************************************/
 float MAX6675::readFahrenheit(void) {
-  return readCelsius() * 9.0f / 5.0f + 32.0f; 
+  return readCelsius() * 9.0f / 5.0f + 32.0f;
 }
 
 byte MAX6675::spiread(void) {
