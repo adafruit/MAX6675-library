@@ -60,7 +60,9 @@ float MAX6675::readCelsius(void) {
     @returns Temperature in F or NAN on failure!
 */
 /**************************************************************************/
-float MAX6675::readFahrenheit(void) { return readCelsius() * 9.0f / 5.0f + 32.0f; }
+float MAX6675::readFahrenheit(void) {
+  return readCelsius() * 9.0f / 5.0f + 32.0f; 
+}
 
 byte MAX6675::spiread(void) {
   int i;
