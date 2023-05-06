@@ -5,6 +5,7 @@
 #define ADAFRUIT_MAX6675_H
 
 #include "Arduino.h"
+#include <Adafruit_SPIDevice.h>
 
 /**************************************************************************/
 /*!
@@ -13,8 +14,10 @@
 /**************************************************************************/
 class MAX6675 {
 public:
-  MAX6675(int8_t SCLK, int8_t CS, int8_t MISO);
+  MAX6675(int8_t _sclk, int8_t _cs, int8_t _miso);
+  MAX6675(int8_t _cs, SPIClass* _spi = &SPI);
 
+  bool begin(void);
   float readCelsius(void);
   float readFahrenheit(void);
 
@@ -23,8 +26,9 @@ public:
   float readFarenheit(void) { return readFahrenheit(); }
 
 private:
-  int8_t sclk, miso, cs;
-  uint8_t spiread(void);
+  Adafruit_SPIDevice spi_dev;
+  bool initialized = false;
+  uint16_t spiread16(void);
 };
 
 #endif
