@@ -6,9 +6,9 @@
 /**************************************************************************/
 /*!
     @brief  Initialize a MAX6675 sensor
-    @param   SCLK The Arduino pin connected to Clock
-    @param   CS The Arduino pin connected to Chip Select
-    @param   MISO The Arduino pin connected to Data Out
+    @param   _sclk The Arduino pin connected to Clock
+    @param   _cs The Arduino pin connected to Chip Select
+    @param   _miso The Arduino pin connected to Data Out
 */
 /**************************************************************************/
 MAX6675::MAX6675(int8_t _sclk, int8_t _cs, int8_t _miso)
