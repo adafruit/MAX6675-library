@@ -12,8 +12,7 @@
 */
 /**************************************************************************/
 MAX6675::MAX6675(int8_t _sclk, int8_t _cs, int8_t _miso)
-  : spi_dev(_cs, _sclk, _miso, -1, 1000000) {
-}
+    : spi_dev(_cs, _sclk, _miso, -1, 1000000) {}
 
 /**************************************************************************/
 /*!
@@ -23,9 +22,8 @@ MAX6675::MAX6675(int8_t _sclk, int8_t _cs, int8_t _miso)
     @param _spi which spi buss to use.
 */
 /**************************************************************************/
-MAX6675::MAX6675(int8_t _cs, SPIClass* _spi)
-  : spi_dev(_cs, 1000000, SPI_BITORDER_MSBFIRST, SPI_MODE0, _spi) {
-}
+MAX6675::MAX6675(int8_t _cs, SPIClass *_spi)
+    : spi_dev(_cs, 1000000, SPI_BITORDER_MSBFIRST, SPI_MODE0, _spi) {}
 
 /**************************************************************************/
 /*!
@@ -34,9 +32,7 @@ MAX6675::MAX6675(int8_t _cs, SPIClass* _spi)
     @return True if the device was successfully initialized, otherwise false.
 */
 /**************************************************************************/
-bool MAX6675::begin(void) {
-  return initialized = spi_dev.begin();
-}
+bool MAX6675::begin(void) { return initialized = spi_dev.begin(); }
 
 /**************************************************************************/
 /*!
