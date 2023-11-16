@@ -6,23 +6,33 @@
 /**************************************************************************/
 /*!
     @brief  Initialize a MAX6675 sensor
-    @param   SCLK The Arduino pin connected to Clock
-    @param   CS The Arduino pin connected to Chip Select
-    @param   MISO The Arduino pin connected to Data Out
+    @param   _sclk The Arduino pin connected to Clock
+    @param   _cs The Arduino pin connected to Chip Select
+    @param   _miso The Arduino pin connected to Data Out
 */
 /**************************************************************************/
-MAX6675::MAX6675(int8_t SCLK, int8_t CS, int8_t MISO) {
-  sclk = SCLK;
-  cs = CS;
-  miso = MISO;
+MAX6675::MAX6675(int8_t _sclk, int8_t _cs, int8_t _miso)
+    : spi_dev(_cs, _sclk, _miso, -1, 1000000) {}
 
-  // define pin modes
-  pinMode(cs, OUTPUT);
-  pinMode(sclk, OUTPUT);
-  pinMode(miso, INPUT);
+/**************************************************************************/
+/*!
+    @brief  Initialize a MAX6675 sensor using hardware SPI.
 
-  digitalWrite(cs, HIGH);
-}
+    @param _cs The pin to use for SPI Chip Select.
+    @param _spi which spi buss to use.
+*/
+/**************************************************************************/
+MAX6675::MAX6675(int8_t _cs, SPIClass *_spi)
+    : spi_dev(_cs, 1000000, SPI_BITORDER_MSBFIRST, SPI_MODE0, _spi) {}
+
+/**************************************************************************/
+/*!
+    @brief  Setup the HW
+
+    @return True if the device was successfully initialized, otherwise false.
+*/
+/**************************************************************************/
+bool MAX6675::begin(void) { return initialized = spi_dev.begin(); }
 
 /**************************************************************************/
 /*!
@@ -32,16 +42,7 @@ MAX6675::MAX6675(int8_t SCLK, int8_t CS, int8_t MISO) {
 /**************************************************************************/
 float MAX6675::readCelsius(void) {
 
-  uint16_t v;
-
-  digitalWrite(cs, LOW);
-  delayMicroseconds(10);
-
-  v = spiread();
-  v <<= 8;
-  v |= spiread();
-
-  digitalWrite(cs, HIGH);
+  uint16_t v = spiread16();
 
   if (v & 0x4) {
     // uh oh, no thermocouple attached!
@@ -51,7 +52,7 @@ float MAX6675::readCelsius(void) {
 
   v >>= 3;
 
-  return v * 0.25;
+  return v * .25f;
 }
 
 /**************************************************************************/
@@ -60,23 +61,22 @@ float MAX6675::readCelsius(void) {
     @returns Temperature in F or NAN on failure!
 */
 /**************************************************************************/
-float MAX6675::readFahrenheit(void) { return readCelsius() * 9.0 / 5.0 + 32; }
+float MAX6675::readFahrenheit(void) { return readCelsius() * 9.f / 5.f + 32.f; }
 
-byte MAX6675::spiread(void) {
-  int i;
-  byte d = 0;
+uint16_t MAX6675::spiread16(void) {
+  uint16_t d = 0;
+  uint8_t buf[2];
 
-  for (i = 7; i >= 0; i--) {
-    digitalWrite(sclk, LOW);
-    delayMicroseconds(10);
-    if (digitalRead(miso)) {
-      // set the bit to 0 no matter what
-      d |= (1 << i);
-    }
-
-    digitalWrite(sclk, HIGH);
-    delayMicroseconds(10);
+  // backcompatibility!
+  if (!initialized) {
+    begin();
   }
+
+  spi_dev.read(buf, 2);
+
+  d = buf[0];
+  d <<= 8;
+  d |= buf[1];
 
   return d;
 }
